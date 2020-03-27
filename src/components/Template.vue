@@ -19,6 +19,8 @@ label, textarea {
 }
 
 textarea {
+  color: #c7cfe2;
+  font-size: 1em;
   padding: 0.5em;
   margin-bottom: 1.5em;
   height: 50em;
@@ -29,7 +31,7 @@ label {
   margin-bottom: 0.5em;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1350px) {
   textarea {
     width: 100%;
   }

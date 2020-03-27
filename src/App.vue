@@ -21,6 +21,8 @@ export default {
 <style>
 body, input, label, textarea {
   font-family: 'Quicksand', sans-serif;
+  background: #1B2233;
+  color: #E8EAEF;
 }
 
 #app {
@@ -35,7 +37,7 @@ main {
   grid-template-columns: 1fr 2fr;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1350px) {
   #app {
     grid-template-columns: 1fr;
   }

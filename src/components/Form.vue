@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 section {
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 label, input {
@@ -33,18 +33,20 @@ label {
 }
 
 input {
-  width: 40em;
+  color: #c7cfe2;
+  font-size: 1em;
+  width: 30em;
   padding: 0.5em;
   margin-bottom: 1.5em;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1350px) {
   input {
     width: 70%;;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   input {
     width: 100%;;
   }
