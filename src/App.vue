@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import 'es6-promise/auto';
+
 import Template from '@/components/Template.vue';
 import Form from '@/components/Form.vue';
 
