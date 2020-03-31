@@ -12,7 +12,7 @@ describe('App.vue', () => {
     wrapper.destroy();
   });
 
-  it('renders Form component', () => {
-    expect(wrapper.find('form-stub').exists()).toBe(true);
+  it('renders ComponentDetailForm component', () => {
+    expect(wrapper.find('componentdetailform-stub').exists()).toBe(true);
   });
 });

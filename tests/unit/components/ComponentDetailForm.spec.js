@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
-import Form from '@/components/Form.vue';
+import ComponentDetailForm from '@/components/ComponentDetailForm.vue';
 
-describe('Form.vue', () => {
+describe('ComponentDetailForm.vue', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(Form);
+    wrapper = shallowMount(ComponentDetailForm);
   });
 
   afterEach(() => {

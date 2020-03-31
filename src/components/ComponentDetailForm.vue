@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'Form',
+  name: 'ComponentDetailForm',
   props: {
     msg: String,
   },
