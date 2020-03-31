@@ -24,7 +24,7 @@ export default {
 body, input, label, textarea {
   font-family: 'Quicksand', sans-serif;
   background: #1B2233;
-  color: #E8EAEF;
+  color: #FFF;;
 }
 
 #app {
