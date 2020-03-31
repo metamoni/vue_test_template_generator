@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
-import Template from '@/components/Template.vue';
+import TemplateContainer from '@/components/TemplateContainer.vue';
 
-describe('Template.vue', () => {
+describe('TemplateContainer.vue', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(Template);
+    wrapper = shallowMount(TemplateContainer);
   });
 
   afterEach(() => {

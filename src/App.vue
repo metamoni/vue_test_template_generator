@@ -1,21 +1,21 @@
 <template>
   <main id="app">
     <ComponentDetailForm />
-    <Template />
+    <TemplateContainer />
   </main>
 </template>
 
 <script>
 import 'es6-promise/auto';
 
-import Template from '@/components/Template.vue';
+import TemplateContainer from '@/components/TemplateContainer.vue';
 import ComponentDetailForm from '@/components/ComponentDetailForm.vue';
 
 export default {
   name: 'App',
   components: {
     ComponentDetailForm,
-    Template,
+    TemplateContainer,
   },
 };
 </script>
