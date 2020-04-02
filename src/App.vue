@@ -23,7 +23,7 @@ export default {
 <style>
 body, input, label, textarea {
   font-family: 'Quicksand', sans-serif;
-  background: #1B2233;
+  background: #222C3E;
   color: #FFF;;
 }
 
