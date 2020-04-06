@@ -5,11 +5,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    message: '',
+    componentName: 'ComponentName',
+    example: 'should do something',
+    context: 'when prop does not match requirements',
   },
   mutations: {
-    updateMessage(state, message) {
-      state.message = message;
+    updateComponentName(state, component) {
+      state.componentName = component;
+    },
+    updateExample(state, example) {
+      state.example = example;
+    },
+    updateContext(state, context) {
+      state.context = context;
     },
   },
 });
