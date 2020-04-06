@@ -2,19 +2,27 @@
   <section>
     <h2>Enter your component data</h2>
     <label for="component-name">Component name</label>
-    <input id="component-name" />
-    <label for="method-name">Method name</label>
-    <input id="method-name" />
+    <input id="component-name" @keyup="updateName" />
+    <label for="example">Example description</label>
+    <input id="example" @keyup="updateExample" />
     <label for="context-name">Context name</label>
-    <input id="context-name" />
+    <input id="context-name" @keyup="updateContext" />
   </section>
 </template>
 
 <script>
 export default {
   name: 'ComponentDetailForm',
-  props: {
-    msg: String,
+  methods: {
+    updateName(event) {
+      this.$store.commit('updateComponentName', event.target.value);
+    },
+    updateExample(event) {
+      this.$store.commit('updateExample', event.target.value);
+    },
+    updateContext(event) {
+      this.$store.commit('updateContext', event.target.value);
+    },
   },
 };
 </script>
