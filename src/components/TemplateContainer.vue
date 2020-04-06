@@ -36,15 +36,7 @@
         <br/>
         <br/>
       <span class="indent">
-        it('<span class="example">{{ exampleText }}</span>', () => {</span>
-        <br/>
-        <span class="double-indent">// expect(...);</span>
-        <br/>
-        <span class="indent">});</span>
-        <br/>
-        <br/>
-      <span class="indent">
-        it('<span class="example">{{ exampleText }}</span>', () => {</span>
+        it('<span class="example">{{ example }}</span>', () => {</span>
         <br/>
         <span class="double-indent">// expect(...);</span>
         <br/>
@@ -58,7 +50,7 @@
         <br/>
         <br/>
         <span class="double-indent">it('<span class="context-example">
-          {{ contextExample }}
+          does something related to this context
           </span>', () => {<br/>
           <span class="double-indent">
             <span class="double-indent">// expect(...);</span>
@@ -78,11 +70,30 @@ export default {
   name: 'TemplateContainer',
   data() {
     return {
-      componentName: 'ComponentName',
-      exampleText: 'example text',
-      context: 'describe context or method',
-      contextExample: 'does something related to this context/method',
+      componentName: this.$store.state.componentName,
+      example: this.$store.state.example,
+      context: this.$store.state.context,
+      method: this.$store.state.methodName,
     };
+  },
+  mounted() {
+    this.$store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case 'updateComponentName':
+          this.componentName = state.componentName;
+          break;
+        case 'updateExample':
+          this.example = state.example;
+          break;
+        case 'updateMethodName':
+          this.method = state.methodName;
+          break;
+        case 'updateContext':
+          this.context = state.context;
+          break;
+        default:
+      }
+    });
   },
 };
 </script>
