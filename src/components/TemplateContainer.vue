@@ -1,6 +1,7 @@
 <template>
   <section>
     <h2>Your template</h2>
+    <button id="copy-button" @click="copyTemplate">Copy to clipboard</button>
     <div id="generated-template">
       import { shallowMount } from '@vue/test-utils';<br/>
       import
@@ -8,8 +9,7 @@
         {{ componentName }}
       </span> from '@/components/
       <span class="component-name">
-        {{ componentName }}.vue
-      </span>';
+        {{ componentName }}.vue</span>';
       <br/>
       <br/>
       describe('
@@ -75,6 +75,22 @@ export default {
       context: this.$store.state.context,
       method: this.$store.state.methodName,
     };
+  },
+  methods: {
+    copyTemplate() {
+      if (document.selection) {
+        const range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById('generated-template'));
+        range.select().createTextRange();
+        document.execCommand('copy');
+      } else if (window.getSelection) {
+        const range = document.createRange();
+        range.selectNode(document.getElementById('generated-template'));
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        // document.getElementById('copy-button').innerText = 'Done!';
+      }
+    },
   },
   mounted() {
     this.$store.subscribe((mutation, state) => {
