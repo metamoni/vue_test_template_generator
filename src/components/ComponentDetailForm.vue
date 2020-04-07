@@ -2,11 +2,13 @@
   <section>
     <h2>Enter your component data</h2>
     <label for="component-name">Component name</label>
-    <input id="component-name" @keyup="updateName" />
-    <label for="example">Example description</label>
-    <input id="example" @keyup="updateExample" />
-    <label for="context-name">Context name</label>
-    <input id="context-name" @keyup="updateContext" />
+    <input id="component-name" @keyup="updateName" :placeholder="this.$store.state.componentName" />
+
+    <label for="example">Test description</label>
+    <input id="example" @keyup="updateExample" :placeholder="this.$store.state.example" />
+
+    <button>Add test</button>
+    <button @click="addContext">Add context</button>
   </section>
 </template>
 
