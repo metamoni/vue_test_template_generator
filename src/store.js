@@ -5,9 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    componentName: 'ComponentName',
-    example: 'should do something',
-    context: 'when prop does not match requirements',
+    componentName: 'DeepThought',
+    example: 'should calculate the meaning of life',
+    context: 'when answer is not known',
   },
   mutations: {
     updateComponentName(state, component) {
