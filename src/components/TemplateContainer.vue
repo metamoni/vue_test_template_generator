@@ -2,28 +2,34 @@
   <section>
     <h2>Your template</h2>
     <button id="copy-button" @click="copyTemplate">Copy to clipboard</button>
-    <div id="generated-template">
+    <div id="generated-template" contentEditable="true">
       import { shallowMount } from '@vue/test-utils';<br/>
+      import Vuex from 'vuex';<br/>
       import
       <span class="component-name">
-        {{ componentName }}
-      </span> from '@/components/
-      <span class="component-name">
-        {{ componentName }}.vue</span>';
+        {{ name }}
+      </span> from '@/components/<span class="component-name">{{ name }}.vue</span>';
       <br/>
       <br/>
-      describe('
-      <span class="component-name">
-        {{ componentName }}
-      </span>
-      ', () => {
+      const localVue = createLocalVue();<br/>
+      localVue.use(Vuex);<br/>
+      let wrapper, store;
       <br/>
-      <span class="indent">let wrapper;</span>
       <br/>
+      describe('<span class="component-name">{{ name }}</span>', () => {
       <br/>
       <span class="indent">beforeEach(() => {</span><br/>
+        <span class="double-indent">// store = new Vuex.Store({</span><br/>
+        <span class="deep-indent">// state: {</span><br/>
+        <span class="deep-indent">// },</span><br/>
+        <span class="double-indent">// });</span>
+        <br/>
+        <br/>
         <span class="double-indent">
-          wrapper = shallowMount(<span class="component-name">{{ componentName }}</span>);
+          wrapper = shallowMount(<span class="component-name">{{ name }}</span>, {<br/>
+          <span class="deep-indent">localVue,</span><br/>
+          <span class="deep-indent">store</span><br/>
+          <span class="double-indent">});</span>
         </span>
       <br/>
       <span class="indent">});</span>
@@ -34,46 +40,26 @@
         <br/>
         <span class="indent">});</span>
         <br/>
-        <br/>
-      <span class="indent">
-        it('<span class="example">{{ example }}</span>', () => {</span>
-        <br/>
-        <span class="double-indent">// expect(...);</span>
-        <br/>
-        <span class="indent">});</span>
-        <br/>
-        <br/>
-      <span class="indent">
-        describe('<span class="context">{{ context }}</span>', () => {</span>
-        <br/>
-        <span class="double-indent">// block setup</span>
-        <br/>
-        <br/>
-        <span class="double-indent">it('<span class="context-example">
-          does something related to this context
-          </span>', () => {<br/>
-          <span class="double-indent">
-            <span class="double-indent">// expect(...);</span>
-            </span><br/>
-          <span class="double-indent">});</span>
-        </span>
-        <br/>
-        <span class="indent">});</span>
-        <br/>
+        <Example />
+        <Context />
       });
     </div>
   </section>
 </template>
 
 <script>
+import Context from '@/components/Context.vue';
+import Example from '@/components/Example.vue';
+
 export default {
   name: 'TemplateContainer',
+  components: {
+    Context,
+    Example,
+  },
   data() {
     return {
-      componentName: this.$store.state.componentName,
-      example: this.$store.state.example,
-      context: this.$store.state.context,
-      method: this.$store.state.methodName,
+      name: this.$store.state.name,
     };
   },
   methods: {
@@ -88,33 +74,19 @@ export default {
         range.selectNode(document.getElementById('generated-template'));
         window.getSelection().addRange(range);
         document.execCommand('copy');
-        // document.getElementById('copy-button').innerText = 'Done!';
+        document.getElementById('copy-button').innerText = 'Copied!';
       }
     },
   },
   mounted() {
     this.$store.subscribe((mutation, state) => {
-      switch (mutation.type) {
-        case 'updateComponentName':
-          this.componentName = state.componentName;
-          break;
-        case 'updateExample':
-          this.example = state.example;
-          break;
-        case 'updateMethodName':
-          this.method = state.methodName;
-          break;
-        case 'updateContext':
-          this.context = state.context;
-          break;
-        default:
-      }
+      if (mutation.type === 'updateComponentName') this.name = state.name;
     });
   },
 };
 </script>
 
-<style scoped>
+<style>
 #generated-template {
   overflow: scroll;
   padding: 0.5em;
@@ -134,7 +106,11 @@ export default {
   margin-left: 2em;
 }
 
-.component-name, .example, .context, .context-example {
+.deep-indent {
+  margin-left: 3em;
+}
+
+.component-name, .example {
   font-weight: 800;
   font-style: Tahoma;
 }
@@ -145,14 +121,6 @@ export default {
 
 .example {
   color: #fdb863;
-}
-
-.context {
-  color: #86bb7f;
-}
-
-.context-example {
-  color: #848cd3;
 }
 
 @media screen and (max-width: 1350px) {
