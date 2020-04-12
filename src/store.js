@@ -5,19 +5,21 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    componentName: 'DeepThought',
-    example: 'should calculate the meaning of life',
-    context: 'when answer is not known',
+    name: 'DeepThought',
+    example: 'calculates the meaning of life',
+    context: 'when answer not known',
+    contexts: [],
+    examples: [],
   },
   mutations: {
     updateComponentName(state, component) {
-      state.componentName = component;
+      state.name = component;
     },
-    updateExample(state, example) {
-      state.example = example;
+    addExample(state, text) {
+      state.examples.push(text);
     },
-    updateContext(state, context) {
-      state.context = context;
+    addContext(state, text) {
+      state.contexts.push(text);
     },
   },
 });
