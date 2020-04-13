@@ -90,7 +90,7 @@ export default {
 
 <style>
 #generated-template {
-  overflow: scroll;
+  overflow: auto;
   padding: 0.5em;
   height: 40em;
   background: #0E0E0E;
