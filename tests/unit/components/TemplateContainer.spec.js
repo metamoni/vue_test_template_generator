@@ -4,25 +4,20 @@ import TemplateContainer from '@/components/TemplateContainer.vue';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+
 let wrapper;
-let store;
-let copyTemplate;
+const copyTemplate = jest.fn();
 
 describe('TemplateContainer.vue', () => {
   beforeEach(() => {
-    store = new Vuex.Store({
-      state: {
-        componentName: 'TestComponent',
-        example: 'passes all tests',
-        context: 'when test example exists',
-      },
-    });
-
-    copyTemplate = jest.fn();
-
     wrapper = shallowMount(TemplateContainer, {
       localVue,
-      store,
+      store: {
+        state: {
+          name: 'Mponent',
+        },
+        subscribe: () => jest.fn(),
+      },
       methods: {
         copyTemplate,
       },
@@ -34,19 +29,19 @@ describe('TemplateContainer.vue', () => {
   });
 
   it('renders a container with the generated template', () => {
-    expect(wrapper.find('#generated-template').exists()).toBe(true);
+    expect(wrapper.contains('#generated-template')).toBe(true);
   });
 
   it('renders given component name in the template', () => {
-    expect(wrapper.findAll('span.component-name').at(0).text()).toBe('TestComponent');
+    expect(wrapper.findAll('span.component-name').at(0).text()).toBe('Mponent');
   });
 
-  it('renders given example description in the template', () => {
-    expect(wrapper.findAll('span.example').at(0).text()).toBe('passes all tests');
+  it('renders an Example component', () => {
+    expect(wrapper.contains('example-stub')).toBe(true);
   });
 
-  it('renders given context description in the template', () => {
-    expect(wrapper.findAll('span.context').at(0).text()).toBe('when test example exists');
+  it('renders a Context component', () => {
+    expect(wrapper.contains('context-stub')).toBe(true);
   });
 
   it('renders Copy to clipboard button', () => {

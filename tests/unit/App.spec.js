@@ -12,7 +12,11 @@ describe('App.vue', () => {
     wrapper.destroy();
   });
 
-  it('renders ComponentDetailForm component', () => {
+  it('renders component detail form', () => {
     expect(wrapper.find('componentdetailform-stub').exists()).toBe(true);
+  });
+
+  it('renders template container', () => {
+    expect(wrapper.find('templatecontainer-stub').exists()).toBe(true);
   });
 });
