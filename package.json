@@ -13,7 +13,7 @@
     "lint": "vue-cli-service lint",
     "dev": "node build/dev-server.js",
     "postinstall": "npm run build",
-    "build": "node build/build.js",
+    "build": "vue-cli-service build",
     "start": "node server.js"
   },
   "dependencies": {
