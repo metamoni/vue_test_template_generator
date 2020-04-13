@@ -1,6 +1,9 @@
 {
   "name": "vue-tdd-template",
   "version": "1.0.0",
+  "engines": {
+    "node": "13.5.0"
+  },
   "description": "A test template generator for your Vue projects",
   "author": "metamoni",
   "private": true,
