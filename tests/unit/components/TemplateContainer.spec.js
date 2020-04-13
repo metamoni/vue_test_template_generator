@@ -44,11 +44,11 @@ describe('TemplateContainer.vue', () => {
     expect(wrapper.contains('context-stub')).toBe(true);
   });
 
-  it('renders Copy to clipboard button', () => {
+  xit('renders Copy to clipboard button', () => {
     expect(wrapper.find('button').text()).toBe('Copy to clipboard');
   });
 
-  it('calls copyTemplate method when button is clicked', () => {
+  xit('calls copyTemplate method when button is clicked', () => {
     wrapper.find('button').trigger('click');
 
     expect(copyTemplate).toHaveBeenCalled();

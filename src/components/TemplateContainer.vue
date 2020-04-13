@@ -1,7 +1,6 @@
 <template>
   <section>
     <h2>Your template</h2>
-    <button id="copy-button" @click="copyTemplate">Copy to clipboard</button>
     <div id="generated-template" contentEditable="true">
       import { shallowMount } from '@vue/test-utils';<br/>
       import Vuex from 'vuex';<br/>
@@ -63,22 +62,6 @@ export default {
     return {
       name: this.$store.state.name,
     };
-  },
-  methods: {
-    copyTemplate() {
-      if (document.selection) {
-        const range = document.body.createTextRange();
-        range.moveToElementText(document.getElementById('generated-template'));
-        range.select().createTextRange();
-        document.execCommand('copy');
-      } else if (window.getSelection) {
-        const range = document.createRange();
-        range.selectNode(document.getElementById('generated-template'));
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        document.getElementById('copy-button').innerText = 'Copied!';
-      }
-    },
   },
   mounted() {
     this.$store.subscribe((mutation, state) => {
