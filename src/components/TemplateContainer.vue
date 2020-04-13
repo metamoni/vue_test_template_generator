@@ -27,8 +27,8 @@
         <span class="double-indent">
           wrapper = shallowMount(<span class="component-name">{{ name }}</span>, {<br/>
           <span class="deep-indent">localVue,</span><br/>
-          <span class="deep-indent">store</span><br/>
-          <span class="deep-indent">propsData: {}</span><br/>
+          <span class="deep-indent">store,</span><br/>
+          <span class="deep-indent">propsData: {},</span><br/>
           <span class="deep-indent">methods: {}</span><br/>
           <span class="double-indent">});</span>
         </span>
