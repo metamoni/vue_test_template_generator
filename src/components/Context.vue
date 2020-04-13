@@ -5,7 +5,7 @@
       <span class="indent">
           describe('<span class="context">{{ context }}</span>', () => {</span>
           <br/>
-          <span class="double-indent">// block setup</span>
+          <span class="double-indent">// context setup</span>
           <br/>
           <br/>
           <span class="double-indent">// it('does something related to this context', () => {});
