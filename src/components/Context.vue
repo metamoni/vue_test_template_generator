@@ -1,6 +1,6 @@
 <template>
   <section>
-    <article v-for="context in contexts" :key="context">
+    <article v-for="context in this.$store.state.contexts" :key="context">
     <br/>
       <span class="indent">
           describe('<span class="context">{{ context }}</span>', () => {</span>
@@ -20,11 +20,6 @@
 <script>
 export default {
   name: 'Context',
-  data() {
-    return {
-      contexts: this.$store.state.contexts,
-    };
-  },
 };
 </script>
 

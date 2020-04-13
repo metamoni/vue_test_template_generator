@@ -1,6 +1,6 @@
 <template>
   <section>
-    <article v-for="example in examples" :key="example">
+    <article v-for="example in this.$store.state.examples" :key="example">
     <br/>
       <span class="indent">
           it('<span class="example">{{ example }}</span>', () => {</span>
@@ -16,10 +16,5 @@
 <script>
 export default {
   name: 'Example',
-  data() {
-    return {
-      examples: this.$store.state.examples,
-    };
-  },
 };
 </script>
