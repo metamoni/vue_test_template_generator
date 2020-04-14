@@ -59,6 +59,10 @@ input {
   margin-top: 0.5em;
 }
 
+::placeholder {
+  color: #969696;
+}
+
 #example, #context {
   width: 24em;
 }
