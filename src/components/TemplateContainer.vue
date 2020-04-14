@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>Your template</h2>
-    <button id="copy-button" @click="copyTemplate">Copy to clipboard</button>
+    <button id="copy-button" @click="copyTemplate()">COPY</button>
     <div id="generated-template" contentEditable="true">
       import { shallowMount } from '@vue/test-utils';<br/>
       import Vuex from 'vuex';<br/>
@@ -66,17 +66,24 @@ export default {
   },
   methods: {
     copyTemplate() {
-      if (document.selection) {
-        const range = document.body.createTextRange();
-        range.moveToElementText(document.getElementById('generated-template'));
-        range.select().createTextRange();
+      const container = document.querySelector('#generated-template');
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(container);
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      try {
         document.execCommand('copy');
-      } else if (window.getSelection) {
-        const range = document.createRange();
-        range.selectNode(document.getElementById('generated-template'));
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        document.getElementById('copy-button').innerText = 'Copied!';
+        const button = document.querySelector('#copy-button');
+        button.innerHTML = 'DONE';
+
+        setTimeout(() => {
+          window.getSelection().removeAllRanges();
+          button.innerHTML = 'COPY';
+        }, 2000);
+      } catch (err) {
+        alert('Oops, try again!');
       }
     },
   },
