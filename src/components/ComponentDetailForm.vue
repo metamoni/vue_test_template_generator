@@ -68,6 +68,7 @@ input {
 }
 
 button {
+  background: white;
   width: 4em;
   margin-left: 1em;
   padding: 0.3em 0.7em;
@@ -109,6 +110,17 @@ button {
 
   button {
     width: 20%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #example, #context {
+    width: 53%;
+  }
+
+  button {
+    width: 30%;
+    font-size: 1.2em;
   }
 }
 </style>
