@@ -2,6 +2,7 @@
   <section>
     <h2>Your template</h2>
     <div id="generated-template" contentEditable="true">
+    <button id="copy-button" @click="copyTemplate()">COPY</button>
       import { shallowMount } from '@vue/test-utils';<br/>
       import Vuex from 'vuex';<br/>
       import
@@ -63,6 +64,29 @@ export default {
       name: this.$store.state.name,
     };
   },
+  methods: {
+    copyTemplate() {
+      const container = document.querySelector('#generated-template');
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(container);
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      try {
+        document.execCommand('copy');
+        const button = document.querySelector('#copy-button');
+        button.innerHTML = 'DONE';
+
+        setTimeout(() => {
+          window.getSelection().removeAllRanges();
+          button.innerHTML = 'COPY';
+        }, 2000);
+      } catch (err) {
+        alert('Oops, try again!');
+      }
+    },
+  },
   mounted() {
     this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'updateComponentName') this.name = state.name;
@@ -106,6 +130,14 @@ export default {
 
 .example {
   color: #fdb863;
+}
+
+#copy-button {
+  float: right;
+  font-size: 0.8em;
+  padding: 0.5em 0.9em;
+  background: rgb(172, 139, 200, 0.8);
+  color: #FFF;
 }
 
 @media screen and (max-width: 1350px) {
