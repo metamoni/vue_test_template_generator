@@ -1,8 +1,8 @@
 <template>
   <section>
     <h2>Your template</h2>
-    <button id="copy-button" @click="copyTemplate()">COPY</button>
     <div id="generated-template" contentEditable="true">
+    <button id="copy-button" @click="copyTemplate()">COPY</button>
       import { shallowMount } from '@vue/test-utils';<br/>
       import Vuex from 'vuex';<br/>
       import
@@ -130,6 +130,14 @@ export default {
 
 .example {
   color: #fdb863;
+}
+
+#copy-button {
+  float: right;
+  font-size: 0.8em;
+  padding: 0.5em 0.9em;
+  background: rgb(172, 139, 200, 0.8);
+  color: #FFF;
 }
 
 @media screen and (max-width: 1350px) {

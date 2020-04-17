@@ -39,6 +39,12 @@ main {
   grid-template-columns: 1fr 2fr;
 }
 
+button {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 5%;
+  font-weight: 700;
+}
+
 @media screen and (max-width: 1350px) {
   #app {
     grid-template-columns: 1fr;

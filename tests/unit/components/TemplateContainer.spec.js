@@ -14,7 +14,7 @@ describe('TemplateContainer.vue', () => {
       localVue,
       store: {
         state: {
-          name: 'Mponent',
+          name: 'ButterRobot',
         },
         subscribe: () => jest.fn(),
       },
@@ -28,12 +28,15 @@ describe('TemplateContainer.vue', () => {
     wrapper.destroy();
   });
 
-  it('renders a container with the generated template', () => {
-    expect(wrapper.contains('#generated-template')).toBe(true);
+  it('renders a container with the generated template and content editable', () => {
+    const container = wrapper.find('#generated-template');
+
+    expect(container.exists()).toBe(true);
+    expect(container.attributes('contenteditable')).toBe('true');
   });
 
   it('renders given component name in the template', () => {
-    expect(wrapper.findAll('span.component-name').at(0).text()).toBe('Mponent');
+    expect(wrapper.findAll('span.component-name').at(0).text()).toBe('ButterRobot');
   });
 
   it('renders an Example component', () => {
@@ -44,8 +47,8 @@ describe('TemplateContainer.vue', () => {
     expect(wrapper.contains('context-stub')).toBe(true);
   });
 
-  it('renders Copy to clipboard button', () => {
-    expect(wrapper.find('button').text()).toBe('Copy to clipboard');
+  it('renders Copy button', () => {
+    expect(wrapper.find('button').text()).toBe('COPY');
   });
 
   it('calls copyTemplate method when button is clicked', () => {
